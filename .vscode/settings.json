@@ -1,0 +1,8 @@
+{
+  "yaml.schemas": {
+    "https://json.schemastore.org/yamllint.json": [
+      "file:///Users/emmamunley/go/src/test/tekton-admission-wehook/dev/manifests/tasks/invalid-task.yaml",
+      "file:///Users/emmamunley/go/src/test/tekton-admission-wehook/dev/manifests/tasks/valid-task.yaml"
+    ]
+  }
+}

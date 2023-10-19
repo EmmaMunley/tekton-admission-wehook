@@ -1,0 +1,40 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: "tekton.webhook.config"
+webhooks:
+  - name: "tekton.webhook.config"
+    rules:
+      - apiGroups: ["tekton.dev"]
+        apiVersions: ["v1"]
+        operations: ["CREATE"]
+        resources: ["pipelines", "tasks"]
+        scope: "*"
+    clientConfig:
+      service:
+        namespace: default
+        name: tekton-webhook
+        path: /validate-pipelines-and-tasks
+        port: 443
+      caBundle: |
+        LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJBQ0NRRGNSQjBvV2ptbXdUQU5CZ2tx
+        aGtpRzl3MEJBUXNGQURBbU1Rc3dDUVlEVlFRR0V3SkIKVlRFWE1CVUdBMVVFQXd3T2RHVnJkRzl1TFhk
+        bFltaHZiMnN3SGhjTk1qTXhNREU0TWpJeE5UUTBXaGNOTXpNeApNREUxTWpJeE5UUTBXakFtTVFzd0NR
+        WURWUVFHRXdKQlZURVhNQlVHQTFVRUF3d09kR1ZyZEc5dUxYZGxZbWh2CmIyc3dnZ0VpTUEwR0NTcUdT
+        SWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDWlBnTE11RWJGbVFabmFvMGEKRDgzVXBEcWVuTmYr
+        TDBCL2lrc0lIV3h2anRyM2VZaUZIbVphYmRtZ3VZQzdNMWZqR0JobUxtS3RYM2tibTlBegphQ1VJL2FC
+        b2ZQb0pWZjZYUlVGakNBdEZIRUtXRldXYXY2cnpEYWErT09yMUlNNlJZd0FUWGhxQ1dqckNZVngxCmpR
+        WmVNZXhJcExPUXBzaFZYMlQ0TFY4ZCtKdHVIVFcwR0hLVDFwc0ozTXNlSUpKZWd0M1FVNWczQmNFWElM
+        SHgKRWhZb2J0RWdhZjJDUmxTN2xVSUpqNTlkNjdSeTVETGM1RGUySnhMTHRjK2ZXa2RWYW1sTFB5Skxo
+        cGFiVXhiVApzZXU2ZjdvdU5JMUhMMk1vNG1ZalU5dmlmZWMrd3c1NWU4TzNkbmlZcnJyekowd2ZIb294
+        YU5pNG1yYWhTbDAyCjF2NExBZ01CQUFFd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFEc1RXdGl3TDlV
+        bzB1Y3dTZ05FL1FxZmU3dGMKa1EvNHJ3dHl1ZjVreWRqelh1SHBTVTNoODQyM09SdGF4eFk1bXZPZUt0
+        SS9xdTJmWFpCeWY1cERRbDlNeHFldgoxRks4ZU4yaCtCaFFyQUdYZjFMY1BsaW5iUnBVTysvTUVtSGtT
+        M203bUpnQ1BkaHIveTkzN0F4cVcyekJGZzVvCitpb1FBV1pNUzZNRjh1OHhURVFqajV1UnR6NVFXeGNz
+        cUErZFpkVktvUnBqcXM1Zm05bnUxRmlieUxCRVFaTTQKUWdHTUhTMVRHVEY2TlVjVHhGZnpHemhvOFpH
+        b3VsVWJSWUFYcnByVDl1RVdyUFM0UDZxTXQzN1VWVHlkY1B5LwprMUhSUE5KS2lVSmNTdXhwRW05T3Vn
+        dkZNaGVpYklZdDJaampwLy9Jb1AwWlRSd29Rc0N0R0sxdjZzZz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUt
+        LS0tLQo=
+    admissionReviewVersions: ["v1"]
+    sideEffects: None
+    timeoutSeconds: 2

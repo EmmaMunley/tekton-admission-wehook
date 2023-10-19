@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: valid-pipeline
+spec:
+  params:
+    - name: username
+      type: string
+  tasks:
+    - name: hello
+      taskSpec:
+        steps:
+          - image: ubuntu
+            script: echo 'hello'
